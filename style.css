@@ -272,7 +272,8 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   flex: 1;
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 760px;
+  padding-top: clamp(24px, 6vh, 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -379,8 +380,13 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .footer-note { font-size: 0.85rem; color: var(--ink-soft); }
 
 @media(max-width: 640px) {
-  .exp-row-head { grid-template-columns: 50px 1fr; }
-  .exp-role { grid-column: 2/3; margin-top: 2px; }
+  .exp-row-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 16px 4px;
+}
   .cs-meta { grid-template-columns: repeat(2,1fr); }
   .cs-stats { grid-template-columns: 1fr; }
   nav .wrap { flex-direction: column; gap: 14px; align-items: flex-start; }
