@@ -570,3 +570,88 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   0%, 100% { opacity: 1; }
   50% { opacity: 0.25; }
 }
+
+/* ---------- Click affordances (Robin's "ink-row" pattern) ----------
+   Anything that goes somewhere carries a quiet arrow at rest:
+     →  opens a page on this site (case studies)
+     ↗  leaves the site (GitHub, LinkedIn, email)
+     ⌄  expands in place (experience rows) — flips when open
+   On devices with a mouse, hovering wakes the row up: the title underlines,
+   the icon and arrow go from muted to full ink, and the arrow nudges.
+   Hover effects are fenced behind (hover: hover) because on phones :hover
+   sticks after a tap. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.item-meta { display: inline-flex; align-items: center; gap: 8px; }
+.item-arrow {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  transition: transform 150ms ease-out, color 150ms ease-out;
+}
+.item-icon, .exp-icon, .c-icon { transition: color 150ms ease-out, opacity 150ms ease-out; }
+.item-year, .pill-link, .contact-row .c-value { transition: color 150ms ease-out; }
+
+/* Expand caret on experience rows */
+.exp-row-head { position: relative; }
+.exp-row-head[data-target] { grid-template-columns: 24px 150px 1fr 1fr 16px; }
+.exp-caret {
+  width: 16px;
+  height: 16px;
+  color: var(--ink-soft);
+  justify-self: end;
+  transition: transform 200ms ease-out, color 150ms ease-out;
+}
+.exp-row.open .exp-caret { transform: rotate(180deg); color: var(--ink); }
+.exp-row-head[data-target]:hover { opacity: 1; } /* replaces the old whole-row fade */
+
+@media (hover: hover) {
+  a.item:hover .item-title,
+  .exp-row-head[data-target]:hover .exp-company,
+  .contact-row:hover .c-label {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  a.item:hover .item-icon,
+  .exp-row-head[data-target]:hover .exp-icon,
+  .exp-row-head[data-target]:hover .exp-caret,
+  a.item:hover .item-year,
+  a.item:hover .pill-link,
+  .contact-row:hover .c-value { color: var(--ink); }
+  a.item:hover .item-arrow { color: var(--ink); transform: translateX(3px); }
+  .exp-row-head[data-target]:hover .exp-caret { transform: translateY(2px); }
+  .exp-row.open .exp-row-head[data-target]:hover .exp-caret { transform: rotate(180deg) translateY(2px); }
+}
+
+@media (max-width: 640px) {
+  /* rows stack on phones, so pin the caret to the top-right corner */
+  .exp-row-head[data-target] { padding-right: 32px; }
+  .exp-caret { position: absolute; top: 18px; right: 4px; }
+}
+
+/* Availability line under the contact list */
+.availability-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 20px 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.availability-note .c-icon { opacity: 0.7; }
+
+/* Work / Fun rows on phones: always put the year (and →) on its own line under
+   the title. Before, the row was "title + year side by side, wrap if no room",
+   so short titles kept the year beside them and long ones pushed it below —
+   which is why one row looked different. Now every row follows the same rule. */
+@media (max-width: 640px) {
+  .item-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .item-top .item-year { padding-left: 28px; } /* line up under the title, past the icon */
+}
