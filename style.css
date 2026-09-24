@@ -653,5 +653,4 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
     align-items: flex-start;
     gap: 6px;
   }
-  .item-top .item-year { padding-left: 28px; } /* line up under the title, past the icon */
 }
