@@ -685,3 +685,41 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .exp-caret   { position: absolute; top: 21px; right: 4px; }
   .exp-detail-inner { padding-left: 36px; }
 }
+
+/* ======================================================================
+   DESKTOP ONLY (641px and wider). Everything below is fenced inside this
+   query, so the phone layout above is not affected in any way.
+   ====================================================================== */
+@media (min-width: 641px) {
+
+  /* Work / Fun rows:
+       [icon] [Title ..........................] [2024 →]
+              [Organization]
+              [Description]
+              [pills]
+     Year goes back to the top-right corner; org, description and pills
+     keep the same indent as the title. */
+  .item { grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 16px; }
+  .item-year  { grid-column: 3; grid-row: 1; justify-self: end; margin-top: 4px;
+                white-space: nowrap; }
+  .item-org   { grid-row: 2; margin-top: 6px; }
+  .item-desc  { grid-row: 3; }
+  .item-pills { grid-row: 4; }
+
+  /* Home: experience & education rows — one row, roomier:
+       [icon]  Oct 2025 – Present   Edna Bennett Pierce…   Research Data… ⌄
+     Wider gaps between the columns, dates never split over two lines,
+     and the chevron sits right after the job title. */
+  .exp-list .exp-row-head,
+  .exp-list .exp-row-head[data-target] {
+    grid-template-columns: 20px 150px minmax(0, 0.85fr) minmax(0, 1.15fr);
+    column-gap: 22px;
+    align-items: center;
+    padding: 18px 4px;
+  }
+  .exp-list .exp-year    { white-space: nowrap; font-size: 0.85rem; }
+  .exp-list .exp-role    { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+  .exp-list .exp-caret   { flex-shrink: 0; }
+  /* opened description lines up under the dates column */
+  .exp-detail-inner      { padding-left: 46px; }
+}
