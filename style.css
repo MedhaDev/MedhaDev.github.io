@@ -643,14 +643,30 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 }
 .availability-note .c-icon { opacity: 0.7; }
 
-/* Work / Fun rows on phones: always put the year (and →) on its own line under
-   the title. Before, the row was "title + year side by side, wrap if no room",
-   so short titles kept the year beside them and long ones pushed it below —
-   which is why one row looked different. Now every row follows the same rule. */
+
+/* ---------- Work / Fun rows on phones only ----------
+   Desktop keeps its original layout (title left, year right) untouched.
+   On phones there isn't room for the year beside a long title, so:
+     [icon] [title, full width ............]
+            [year →]
+            [org]
+            [description]
+            [pills]
+   The icon owns its own column, so every icon lines up down the page and
+   everything else starts on one clean vertical line under the title. */
 @media (max-width: 640px) {
-  .item-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+  .item {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+    padding: 24px 0;
   }
+  .item-top, .item-title-row { display: contents; }
+  .item-icon  { grid-column: 1; grid-row: 1; width: 20px; height: 20px; margin-top: 3px; }
+  .item-title { grid-column: 2; grid-row: 1; font-size: 1.1rem; line-height: 1.3; }
+  .item-year  { grid-column: 2; grid-row: 2; margin-top: 12px; font-size: 0.8rem; }
+  .item-org   { grid-column: 2; grid-row: 3; margin-top: 6px; }
+  .item-desc  { grid-column: 2; grid-row: 4; margin-top: 16px; }
+  .item-pills { grid-column: 2; grid-row: 5; margin-top: 16px; }
 }
