@@ -706,20 +706,25 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .item-desc  { grid-row: 3; }
   .item-pills { grid-row: 4; }
 
-  /* Home: experience & education rows — one row, roomier:
-       [icon]  Oct 2025 – Present   Edna Bennett Pierce…   Research Data… ⌄
-     Wider gaps between the columns, dates never split over two lines,
-     and the chevron sits right after the job title. */
+  /* Home: experience & education rows, same idea:
+       [icon] [Company ..........................] [Oct 2025 – Present] [⌄]
+              [Role]
+     Dates never wrap, the chevron gets its own slim column, and the opened
+     description starts under the company name. */
   .exp-list .exp-row-head,
   .exp-list .exp-row-head[data-target] {
-    grid-template-columns: 20px 150px minmax(0, 0.85fr) minmax(0, 1.15fr);
-    column-gap: 22px;
-    align-items: center;
+    grid-template-columns: 20px minmax(0, 1fr) auto 16px;
+    column-gap: 16px;
+    line-height: normal; /* education rows are <div>s, work rows are <button>s: match them */
+    row-gap: 0;
+    align-items: start;
     padding: 18px 4px;
   }
-  .exp-list .exp-year    { white-space: nowrap; font-size: 0.85rem; }
-  .exp-list .exp-role    { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
-  .exp-list .exp-caret   { flex-shrink: 0; }
-  /* opened description lines up under the dates column */
-  .exp-detail-inner      { padding-left: 46px; }
+  .exp-list .exp-icon    { grid-column: 1; grid-row: 1; margin-top: 1px; }
+  .exp-list .exp-company { grid-column: 2; grid-row: 1; line-height: 1.4; }
+  .exp-list .exp-year    { grid-column: 3; grid-row: 1; justify-self: end;
+                           white-space: nowrap; font-size: 0.85rem; margin-top: 2px; }
+  .exp-list .exp-caret   { grid-column: 4; grid-row: 1; margin-top: 3px; }
+  .exp-list .exp-role    { grid-column: 2; grid-row: 2; margin-top: 4px; font-size: 0.9rem; }
+  .exp-detail-inner      { padding-left: 40px; }
 }
