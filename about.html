@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About - Medha Devalraj</title>
+<meta name="theme-color" content="#e6e1e6">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-about">
 
-<nav>
-  <div class="wrap">
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap nav-bar">
     <a href="index.html" class="nav-logo">/ˈmɛdə/</a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="work.html">Work</a>
       <a href="fun.html">Fun</a>
-      <a href="about.html" class="active">About</a>
+      <a href="about.html" class="active" aria-current="page">About</a>
     </div>
+    <span class="nav-end" aria-hidden="true"></span>
   </div>
 </nav>
 
@@ -39,36 +41,36 @@
       <div class="about-category">
         <p class="about-category-label">01. Myself</p>
         <div class="about-photo-row">
-          <img class="about-photo" src="images/about/myself/1.jpeg" alt="">
-          <img class="about-photo" src="images/about/myself/2.jpeg" alt="">
-          <img class="about-photo" src="images/about/myself/3.jpeg" alt="">
+          <img class="about-photo" src="images/about/myself/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Medha">
+          <img class="about-photo" src="images/about/myself/2.jpeg" width="684" height="818" style="--ar:0.8362" loading="lazy" decoding="async" alt="Medha">
+          <img class="about-photo" src="images/about/myself/3.jpeg" width="1218" height="1600" style="--ar:0.7612" loading="lazy" decoding="async" alt="Medha">
         </div>
       </div>
 
       <div class="about-category">
         <p class="about-category-label">02. Mountains</p>
         <div class="about-photo-row">
-          <img class="about-photo" src="images/about/mountains/1.jpeg" alt="">
-          <img class="about-photo" src="images/about/mountains/2.jpeg" alt="">
-          <img class="about-photo" src="images/about/mountains/3.jpeg" alt="">
+          <img class="about-photo" src="images/about/mountains/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
+          <img class="about-photo" src="images/about/mountains/2.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Mountain view">
+          <img class="about-photo" src="images/about/mountains/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
         </div>
       </div>
 
       <div class="about-category">
         <p class="about-category-label">03. Photography</p>
         <div class="about-photo-row">
-          <img class="about-photo" src="images/about/photography/1.jpeg" alt="">
-          <img class="about-photo" src="images/about/photography/2.jpeg" alt="">
-          <img class="about-photo" src="images/about/photography/3.jpeg" alt="">
+          <img class="about-photo" src="images/about/photography/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Photograph">
+          <img class="about-photo" src="images/about/photography/2.jpeg" width="1347" height="1600" style="--ar:0.8419" loading="lazy" decoding="async" alt="Photograph">
+          <img class="about-photo" src="images/about/photography/3.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Photograph">
         </div>
       </div>
 
       <div class="about-category">
         <p class="about-category-label">04. Community</p>
         <div class="about-photo-row">
-          <img class="about-photo" src="images/about/community/1.jpeg" alt="">
-          <img class="about-photo" src="images/about/community/2.jpeg" alt="">
-          <img class="about-photo" src="images/about/community/3.jpeg" alt="">
+          <img class="about-photo" src="images/about/community/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
+          <img class="about-photo" src="images/about/community/2.jpeg" width="1264" height="843" style="--ar:1.4994" loading="lazy" decoding="async" alt="Community event">
+          <img class="about-photo" src="images/about/community/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
         </div>
       </div>
     </div>
@@ -87,5 +89,21 @@
   </div>
 </footer>
 
+
+<nav class="mobile-menu" aria-label="Site menu">
+  <div class="mobile-menu-panel" id="mobileMenu" hidden>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="fun.html">Fun</a>
+      <a href="about.html" class="active" aria-current="page">About</a>
+  </div>
+  <button type="button" class="mobile-menu-btn" aria-expanded="false" aria-controls="mobileMenu">
+    <svg class="mm-open" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="mm-close" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<script src="nav.js" defer></script>
 </body>
 </html>

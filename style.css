@@ -8,6 +8,10 @@
   --line: rgba(26,25,25,0.14);
   --btn-dark: #1a1919;
   --btn-dark-text: #eae8e3;
+  --font-mono: 'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --gutter: 1.5rem; /* Robin's page gutter: 24px at every width */
+  --shadow-floating: 0 0.75rem 1.5rem rgba(26,25,25,0.14);
 }
 
 /* Rotating page paper (warm greige family, per Robin's colors.css comment: "Warm greige neutrals borrowed from terrain.com") */
@@ -18,13 +22,26 @@ body.page-about  { background: #e6e1e6; }
 
 * { box-sizing: border-box; }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overscroll-behavior: none; /* no rubber-band bounce past top/bottom */
+}
+html, body { overflow-x: clip; } /* nothing can ever cause sideways scrolling */
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+img, svg, video { max-width: 100%; }
+
 body {
   margin: 0;
   color: var(--ink);
-  font-family: 'Fira Mono', monospace;
-  font-size: 15px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.9375rem, 0.21vw + 0.88rem, 1rem); /* 15px on phones -> 16px on desktop */
+  -webkit-font-smoothing: antialiased;  /* macOS draws both faces heavier than intended */
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.65;
   min-height: 100vh;
+  min-height: 100dvh; /* matches the visible screen on phones with collapsing browser bars */
+  overflow-wrap: break-word; /* long emails/URLs wrap instead of pushing the page sideways */
   display: flex;
   flex-direction: column;
 }
@@ -32,7 +49,7 @@ body {
 a { color: inherit; }
 
 h1, h2, h3, .headline {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   line-height: 1.15;
   margin: 0;
@@ -41,24 +58,27 @@ h1, h2, h3, .headline {
 .wrap {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
   width: 100%;
 }
 
 main { flex: 1; }
 
 /* ---------- Nav ---------- */
-nav .wrap {
+.nav-bar {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 24px 32px;
+  gap: 16px;
+  padding-top: 32px;
+  padding-bottom: 8px;
 }
-.nav-links { justify-self: center; }
+.nav-bar .nav-logo { justify-self: start; }
+.nav-bar .nav-end { justify-self: end; }
 .nav-logo {
-  justify-self: start;
   color: var(--ink);
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 1.05rem;
   text-decoration: none;
@@ -66,11 +86,14 @@ nav .wrap {
 .nav-links {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 16px;
+  justify-content: center;
+  column-gap: 22px;
   row-gap: 4px;
 }
+
 .nav-links a {
   text-decoration: none;
+  padding: 6px 2px; /* bigger tap target on touch screens */
   font-size: 0.9rem;
   color: var(--ink-soft);
   text-underline-offset: 4px;
@@ -105,12 +128,14 @@ nav .wrap {
 }
 .hero-buttons {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   margin-top: 26px;
 }
 .btn {
   display: inline-block;
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.88rem;
   padding: 12px 22px;
   border-radius: 999px;
@@ -130,7 +155,7 @@ nav .wrap {
 }
 .exp-row-head {
   display: grid;
-  grid-template-columns: 20px 150px 1fr 1fr;
+  grid-template-columns: 24px 150px 1fr 1fr;
   gap: 16px;
   align-items: center;
   padding: 16px 4px;
@@ -139,13 +164,11 @@ nav .wrap {
   border: none;
   width: 100%;
   text-align: left;
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.95rem;
   color: var(--ink);
 }
-.exp-icon { width: 18px; height: 18px; flex-shrink: 0; }
-.exp-logo { width: 18px; height: 18px; flex-shrink: 0; object-fit: contain; border-radius: 3px; }
-img.exp-icon { object-fit: contain; border-radius: 2px; }
+.exp-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-soft); }
 .exp-row-head:hover { opacity: 0.7; }
 .exp-year { color: var(--ink-soft); }
 .exp-company { font-weight: 700; }
@@ -155,7 +178,7 @@ img.exp-icon { object-fit: contain; border-radius: 2px; }
   overflow: hidden;
   transition: max-height 0.3s ease;
 }
-.exp-row.open .exp-detail { max-height: 400px; }
+
 .exp-detail-inner {
   padding: 4px 4px 24px;
   max-width: 640px;
@@ -185,7 +208,7 @@ img.exp-icon { object-fit: contain; border-radius: 2px; }
 
 /* ---------- Section labels ---------- */
 .section-label {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 8px;
@@ -215,10 +238,12 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   flex-wrap: wrap;
 }
 .item-title {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 1.15rem;
 }
+.item-title-row { display: flex; align-items: center; gap: 10px; }
+.item-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--ink-soft); }
 .item-year { color: var(--ink-soft); font-size: 0.85rem; white-space: nowrap; }
 .item-org { color: var(--ink-soft); font-size: 0.85rem; margin-top: 4px; }
 .item-desc { color: var(--ink-soft); font-size: 0.92rem; margin-top: 10px; max-width: 640px; line-height: 1.7; }
@@ -235,7 +260,7 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
 .cs-overview h2 { font-size: clamp(1.3rem,2.6vw,1.7rem); max-width: 640px; margin-bottom: 14px; }
 .cs-overview p { color: var(--ink-soft); max-width: 640px; line-height: 1.75; font-size: 0.95rem; }
 .cs-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; padding: 36px 0; }
-.cs-stat-num { font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 1.8rem; display: block; }
+.cs-stat-num { font-family: var(--font-sans); font-weight: 700; font-size: 1.8rem; display: block; }
 .cs-stat-label { font-size: 0.82rem; color: var(--ink-soft); margin-top: 4px; }
 .cs-journey-block { max-width: 660px; margin-bottom: 26px; }
 .cs-journey-block h3 { font-size: 1.05rem; margin-bottom: 8px; }
@@ -243,58 +268,26 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
 .cs-win-list { list-style: none; padding: 0; margin: 0; }
 .cs-win-item { padding: 16px 0; border-top: 1px solid var(--line); }
 .cs-win-item:last-child { border-bottom: 1px solid var(--line); }
-.cs-win-item h4 { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.98rem; margin-bottom: 4px; }
+.cs-win-item h4 { font-family: var(--font-sans); font-size: 0.98rem; margin-bottom: 4px; }
 .cs-win-item p { color: var(--ink-soft); font-size: 0.88rem; max-width: 600px; }
 
-/* ---------- Home: two-column split (matches Robin's actual grid-cols-2) ---------- */
-.home-split {
-  display: grid;
-  grid-template-columns: 55% 45%;
-}
-.home-right {
-  border-left: 1px solid rgba(26,25,25,0.3);
-  background-color: color-mix(in srgb, var(--pill-bg) 65%, transparent);
-}
-.home-left {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 32px 48px;
-}
-.home-left-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.home-left-hero {
-  flex: 1;
-  margin: 0 auto;
-  width: 100%;
+/* ---------- Home: single-column layout ----------
+   Previously a sticky two-column split (55%/45%, height:100vh). That combo
+   is exactly the kind of thing that renders differently across OSes: 100vh
+   means something slightly different depending on browser chrome/taskbar
+   height, so on some Windows setups the hero content had less room than it
+   needed and got visibly cut off. A plain stacked column, reusing the same
+   .wrap/nav/footer every other page already uses, has no viewport-height
+   dependency at all — it just flows, the same way on every device. */
+.home-hero {
+  padding: 64px 0 24px;
   max-width: 760px;
-  padding-top: clamp(24px, 6vh, 100px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.home-logo-mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--pill-text-inv, #eae8e3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  margin-bottom: 32px;
 }
 .home-headline {
-  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-  line-height: 1.2;
+  font-size: clamp(1.9rem, 1.6vw + 1.1rem, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 .home-headline .role {
   background: rgba(26,25,25,0.1);
@@ -305,7 +298,7 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   font-style: italic;
 }
 .home-specialty {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--ink);
@@ -321,33 +314,24 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   to { clip-path: inset(0 0 0 0); }
 }
 .home-blurb {
+  text-wrap: pretty; /* avoids a lonely last word on a line */
   margin-top: 24px;
-  max-width: 100%;
+  max-width: 640px;
   color: var(--ink-soft);
-  font-family: 'Fira Mono', monospace;
-  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
   line-height: 1.75;
 }
 .home-buttons { margin-top: 26px; }
-.home-left-bottom {
-  font-size: 0.78rem;
-  color: var(--ink-soft);
-  padding-top: 20px;
-}
-.home-right {
-  min-width: 0;
-  padding: 32px 32px 60px;
-}
-.home-right .section-block { margin-bottom: 96px; }
-.home-right .section-block:last-child { margin-bottom: 0; }
-.home-right .section-block h2 {
+.section-block { margin-top: 88px; }
+.section-block h2 {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: none;
-}
-@media(max-width: 860px) {
-  .home-split { grid-template-columns: 1fr; }
-  .home-left { position: static; height: auto; }
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
 /* ---------- Contact row list (exact match to Robin's ContactSection.astro) ---------- */
@@ -365,12 +349,12 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   border-bottom: 1px dotted rgba(26,25,25,0.3);
   text-decoration: none;
   color: var(--ink);
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-mono);
 }
 .c-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
 .contact-row .c-label { flex: 1; font-size: 0.95rem; }
 .contact-row .c-label.marker { background: rgba(26,25,25,0.1); padding: 0 4px; }
-.contact-row .c-value { flex-shrink: 0; font-size: 0.85rem; color: var(--ink-soft); }
+.contact-row .c-value { font-size: 0.85rem; color: var(--ink-soft); text-align: right; min-width: 0; }
 
 footer { border-top: 1px solid var(--line); padding: 28px 0; margin-top: 40px; }
 footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
@@ -378,6 +362,72 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .footer-links a { text-decoration: none; font-size: 0.85rem; color: var(--ink-soft); }
 .footer-links a:hover { color: var(--ink); }
 .footer-note { font-size: 0.85rem; color: var(--ink-soft); }
+
+/* ---------- Mobile menu (Robin's pattern: floating pill at the bottom, in thumb reach) ---------- */
+.mobile-menu { display: none; }
+@media (max-width: 720px) {
+  .nav-bar .nav-links, .nav-bar .nav-end { display: none; }
+  .nav-bar { grid-template-columns: 1fr; }
+  /* room at the bottom so the pill never covers the last lines of the page */
+  body { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    left: max(var(--gutter), env(safe-area-inset-left));
+    right: max(var(--gutter), env(safe-area-inset-right));
+    bottom: calc(var(--gutter) + env(safe-area-inset-bottom));
+    z-index: 50;
+  }
+}
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--btn-dark-text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-floating);
+}
+.mobile-menu-btn .mm-close { display: none; }
+.mobile-menu.is-open .mm-open { display: none; }
+.mobile-menu.is-open .mm-close { display: block; }
+.mobile-menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 56px;
+  max-height: calc(100dvh - 7rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--ink);
+  box-shadow: var(--shadow-floating);
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu-panel[hidden] { display: none; }
+.mobile-menu-panel a {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 6px;
+  color: var(--btn-dark-text);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-decoration: none;
+  opacity: 0.6;
+  text-underline-offset: 4px;
+}
+.mobile-menu-panel a:hover { background: rgba(234,232,227,0.1); }
+.mobile-menu-panel a.active { opacity: 1; text-decoration: underline; }
+.mobile-menu-btn:focus-visible, .mobile-menu-panel a:focus-visible { outline-color: var(--btn-dark-text); }
 
 @media(max-width: 640px) {
   .exp-row-head {
@@ -389,7 +439,17 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 }
   .cs-meta { grid-template-columns: repeat(2,1fr); }
   .cs-stats { grid-template-columns: 1fr; }
-  nav .wrap { flex-direction: column; gap: 14px; align-items: flex-start; }
+  .nav-bar { padding-top: 24px; }
+  main .wrap { padding-top: 24px; }
+  .home-hero { padding-top: 32px; }
+  .section-block { margin-top: 64px; }
+  .contact-row { flex-wrap: wrap; gap: 4px 16px; }
+  .contact-row .c-value { flex-basis: 100%; text-align: left; padding-left: 34px; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
+}
+/* Respect people who turn off animations in their OS settings */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
 
@@ -422,40 +482,66 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   margin-top: 8px;
   background: var(--ink);
   color: var(--pill-bg);
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   padding: 5px 12px;
   border-radius: 999px;
   white-space: nowrap;
 }
+/* No cursor on touch devices, so this hover-only preview never gets a
+   chance to disappear on its own the way it does with a mouse — hide it
+   outright wherever there's no hover capability. */
+@media (hover: none) {
+  .cursor-tooltip { display: none !important; }
+}
 
-/* ---------- About page photo categories: 2x2 macro-grid, tight uncropped clusters ---------- */
+/* ---------- Role icons (experience rows + case study pages) ---------- */
+.cs-org-logo {
+  width: 26px;
+  height: 26px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ---------- About page photo categories ----------
+   Each category gets the full content width. Every photo carries its own
+   aspect ratio (--ar, set in about.html); using that ratio as the flex-grow
+   value makes all photos in a row the exact same height while filling the
+   width, so nothing is cropped and nothing is left dangling. */
 .about-category-grid {
   margin-top: 64px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
 }
 .about-category-label {
   font-size: 0.85rem;
   color: var(--ink-soft);
-  margin-bottom: 8px;
+  margin: 0 0 10px;
   letter-spacing: 0.02em;
 }
 .about-photo-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2px;
+  gap: 6px;
 }
 .about-photo {
-  width: calc(33.333% - 1.4px);
+  flex: var(--ar, 1) 1 0;
+  min-width: 0;
+  width: 100%;
   height: auto;
+  aspect-ratio: var(--ar, 1);
+  object-fit: cover;
   display: block;
+  border-radius: 3px;
+  background: rgba(26,25,25,0.06); /* placeholder tone while loading */
 }
-@media(max-width: 860px) {
-  .about-category-grid { grid-template-columns: 1fr; }
+/* Phones: first photo spans the full width, the other two share a row */
+@media (max-width: 560px) {
+  .about-category-grid { gap: 36px; margin-top: 48px; }
+  .about-photo-row { gap: 4px; }
+  .about-photo:first-child { flex-basis: 100%; }
 }
 
 /* ---------- Status pill (open to work) ---------- */
@@ -467,7 +553,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   box-sizing: border-box;
   border: 1px solid rgba(26,25,25,0.25);
   border-radius: 999px;
-  font-family: 'Fira Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.88rem;
   color: var(--ink-soft);
   width: fit-content;

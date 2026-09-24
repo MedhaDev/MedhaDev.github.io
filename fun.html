@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fun - Medha Devalraj</title>
+<meta name="theme-color" content="#dfe3ea">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-fun">
 
-<nav>
-  <div class="wrap">
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap nav-bar">
     <a href="index.html" class="nav-logo">/ˈmɛdə/</a>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="work.html">Work</a>
-      <a href="fun.html" class="active">Fun</a>
+      <a href="fun.html" class="active" aria-current="page">Fun</a>
       <a href="about.html">About</a>
     </div>
+    <span class="nav-end" aria-hidden="true"></span>
   </div>
 </nav>
 
@@ -29,7 +31,7 @@
 
       <a href="https://github.com/MedhaDev/pa-childcare-analysis" target="_blank" class="item">
         <div class="item-top">
-          <span class="item-title">PA Child Care Access Analysis</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span class="item-title">PA Child Care Access Analysis</span></span>
           <span class="item-year">2025</span>
         </div>
         <div class="item-desc">County-level analysis of licensed child care access across all 67 PA counties. Python pipeline, PA DHS licensing data, Census ACS estimates, Streamlit dashboard.</div>
@@ -40,7 +42,7 @@
 
       <a href="https://github.com/MedhaDev/state-college-food" target="_blank" class="item">
         <div class="item-top">
-          <span class="item-title">State College Food Intelligence</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg><span class="item-title">State College Food Intelligence</span></span>
           <span class="item-year">2024</span>
         </div>
         <div class="item-desc">Restaurant analytics pipeline for State College, PA - 145+ records via Google Places API, 27 cuisine types, a 5-tab dashboard. Built because I kept wanting to know where to eat.</div>
@@ -51,7 +53,7 @@
 
       <a href="https://github.com/MedhaDev/priority-app" target="_blank" class="item">
         <div class="item-top">
-          <span class="item-title">Priority Matrix</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="item-title">Priority Matrix</span></span>
           <span class="item-year">2025 &middot; in progress</span>
         </div>
         <div class="item-desc">A self-instrumented productivity tracker - Eisenhower Matrix and Pomodoro timer, feeding a companion Tableau dashboard analyzing my own working patterns.</div>
@@ -67,7 +69,7 @@
 
       <div class="item" style="cursor:default;">
         <div class="item-top">
-          <span class="item-title">Salesforce Student User Group</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span class="item-title">Salesforce Student User Group</span></span>
           <span class="item-year">2024&ndash;2025</span>
         </div>
         <div class="item-org">Co-Founder &amp; President</div>
@@ -76,7 +78,7 @@
 
       <div class="item" style="cursor:default;">
         <div class="item-top">
-          <span class="item-title">Global Ambassadors Program</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><span class="item-title">Global Ambassadors Program</span></span>
           <span class="item-year">2023&ndash;2025</span>
         </div>
         <div class="item-org">Volunteer</div>
@@ -85,7 +87,7 @@
 
       <div class="item" style="cursor:default;">
         <div class="item-top">
-          <span class="item-title">Teach For India</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span class="item-title">Teach For India</span></span>
           <span class="item-year">2022</span>
         </div>
         <div class="item-org">Research &amp; Data Collection Volunteer</div>
@@ -94,7 +96,7 @@
 
       <div class="item" style="cursor:default;">
         <div class="item-top">
-          <span class="item-title">U&amp;I Trust</span>
+          <span class="item-title-row"><svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg><span class="item-title">U&amp;I Trust</span></span>
           <span class="item-year">2022&ndash;2023</span>
         </div>
         <div class="item-org">Teaching Volunteer</div>
@@ -117,5 +119,21 @@
   </div>
 </footer>
 
+
+<nav class="mobile-menu" aria-label="Site menu">
+  <div class="mobile-menu-panel" id="mobileMenu" hidden>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="fun.html" class="active" aria-current="page">Fun</a>
+      <a href="about.html">About</a>
+  </div>
+  <button type="button" class="mobile-menu-btn" aria-expanded="false" aria-controls="mobileMenu">
+    <svg class="mm-open" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="mm-close" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<script src="nav.js" defer></script>
 </body>
 </html>

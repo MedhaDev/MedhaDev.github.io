@@ -2,216 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Medha Devalraj</title>
+<meta name="theme-color" content="#eae8e3">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-home">
 
-<div class="home-split">
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap nav-bar">
+    <a href="index.html" class="nav-logo">/ˈmɛdə/</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="fun.html">Fun</a>
+      <a href="about.html">About</a>
+    </div>
+    <span class="nav-end" aria-hidden="true"></span>
+  </div>
+</nav>
 
-    <header class="home-left">
-      <div class="home-left-top">
-        <a href="index.html" class="nav-logo">/ˈmɛdə/</a>
-        <div class="nav-links">
-          <a href="index.html" class="active">Home</a>
-          <a href="work.html">Work</a>
-          <a href="fun.html">Fun</a>
-          <a href="about.html">About</a>
+<main>
+  <div class="wrap">
+
+    <div class="home-hero">
+      <h1 class="home-headline">Medha, <span class="role">analytics and data professional</span> at the intersection of numbers and narratives</h1>
+      <p class="home-specialty">data &middot; analytics &middot; research &middot; applied AI</p>
+      <p class="home-blurb">Hi, I'm Medha. I'm a research-trained data professional who moves between technical and stakeholder-facing work without much friction. Comfortable in a dataset one hour, in front of a state agency's leadership the next. I like owning a problem end-to-end: asking tough questions before the analysis starts, and handing over something my team can actually rely on. Lately I've been leaning into applied AI &amp; data engineering, because the fastest way to actually trust an analysis is to have built the system that fed it.</p>
+      <div class="hero-buttons home-buttons">
+        <a href="mailto:medhasharma.dev@gmail.com" class="btn btn-dark">Contact me</a>
+        <div class="status-pill"><span class="status-dot"></span>Open to opportunities</div>
+      </div>
+    </div>
+
+    <section class="section-block" id="experience">
+      <h2>Where I've worked</h2>
+      <div class="exp-list">
+
+        <div class="exp-row">
+          <button class="exp-row-head" data-target="exp1">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            <span class="exp-year">Oct 2025 - Present</span>
+            <span class="exp-company">Edna Bennett Pierce Prevention Research Center</span>
+            <span class="exp-role">Research Data Management Specialist</span>
+          </button>
+          <div class="exp-detail" id="exp1">
+            <div class="exp-detail-inner">
+              <p>Own end-to-end data management across longitudinal and multi-cohort research studies, building the pipeline that standardizes 250K+ survey records and designing research database schemas with field-level validation. Currently leading the data side of a cost-benefit analysis for a statewide autism services initiative, integrating financial data across three partner organizations.</p>
+              <div class="pill-row">
+                <span class="pill">Python</span>
+                <span class="pill">R</span>
+                <span class="pill">SQL</span>
+                <span class="pill">AWS (S3, EC2, RDS)</span>
+                <span class="pill">Snowflake</span>
+                <span class="pill">Streamlit</span>
+                <span class="pill">Regression Modeling</span>
+                <span class="pill">Cost-Benefit Analysis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-row">
+          <button class="exp-row-head" data-target="exp2">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span class="exp-year">May 2024 - May 2025</span>
+            <span class="exp-company">Pennsylvania State Data Center (PaSDC)</span>
+            <span class="exp-role">Data Analyst</span>
+          </button>
+          <div class="exp-detail" id="exp2">
+            <div class="exp-detail-inner">
+              <p>Migrated 20+ years of legacy demographic data into a governed SQL Server system and built 38 self-service Tableau dashboards for agency partners. Validated demographic forecasting methodologies against Census baselines to improve population projections used in state agency planning across all 67 PA counties, and sole-authored a published research brief on excess moisture and crop loss.</p>
+              <div class="pill-row">
+                <span class="pill">SQL Server</span>
+                <span class="pill">T-SQL</span>
+                <span class="pill">Python</span>
+                <span class="pill">Excel (Power Query, PivotTables)</span>
+                <span class="pill">Tableau</span>
+                <span class="pill">Datawrapper</span>
+                <span class="pill">Forecasting</span>
+                <span class="pill">Data Modeling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-row">
+          <button class="exp-row-head" data-target="exp3">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span class="exp-year">May 2024 - May 2025</span>
+            <span class="exp-company">Center for Survey Research</span>
+            <span class="exp-role">Research Specialist</span>
+          </button>
+          <div class="exp-detail" id="exp3">
+            <div class="exp-detail-inner">
+              <p>Support qualitative and mixed-methods research for the Center for Survey Research, running interviews and focus groups, coding data thematically, and gathering requirements through stakeholder meetings across multiple state-facing studies - including a statewide internal report on collegiate recovery programs delivered to DDAP.</p>
+              <div class="pill-row">
+                <span class="pill">NVivo</span>
+                <span class="pill">Qualitative Research</span>
+                <span class="pill">Focus Groups</span>
+                <span class="pill">Thematic Analysis</span>
+                <span class="pill">Qualitative Coding</span>
+                <span class="pill">Stakeholder Interviewing</span>
+                <span class="pill">Requirements Gathering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-row">
+          <button class="exp-row-head" data-target="exp4">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+            <span class="exp-year">Aug 2023 - May 2024</span>
+            <span class="exp-company">Pennsylvania State University</span>
+            <span class="exp-role">Graduate Research Assistant</span>
+          </button>
+          <div class="exp-detail" id="exp4">
+            <div class="exp-detail-inner">
+              <p>Supported 15+ faculty-led research projects through data cleaning and statistical analysis, and created SQL instructional materials and tutoring sessions that improved student comprehension in core analytics coursework.</p>
+              <div class="pill-row">
+                <span class="pill">SQL</span>
+                <span class="pill">R</span>
+                <span class="pill">Data Cleaning</span>
+                <span class="pill">Statistical Analysis</span>
+                <span class="pill">Teaching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="exp-row">
+          <button class="exp-row-head" data-target="exp5">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-8.49a6 6 0 0 0 0 8.49m11.31-11.31a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+            <span class="exp-year">Mar 2022 - Aug 2022</span>
+            <span class="exp-company">Defence Research and Development Organisation (DRDO), Advanced Systems Laboratory</span>
+            <span class="exp-role">Engineering Intern</span>
+          </button>
+          <div class="exp-detail" id="exp5">
+            <div class="exp-detail-inner">
+              <p>Designed, simulated, and tested an S-band microstrip patch antenna using Ansys HFSS, running iterative parametric analysis across design configurations, and conducted comparative analysis across 10+ defense technologies for R&amp;D prioritization.</p>
+              <div class="pill-row">
+                <span class="pill">Ansys HFSS</span>
+                <span class="pill">RF Engineering</span>
+                <span class="pill">Antenna Design</span>
+                <span class="pill">Comparative Analysis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section-block" id="education">
+      <h2>Education</h2>
+      <div class="exp-list">
+        <div class="exp-row" style="cursor:default;">
+          <div class="exp-row-head" style="cursor:default;">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+            <span class="exp-year">Aug 2023 - May 2025</span>
+            <span class="exp-company">Penn State University</span>
+            <span class="exp-role">MS, Information Systems</span>
+          </div>
+        </div>
+        <div class="exp-row" style="cursor:default;">
+          <div class="exp-row-head" style="cursor:default;">
+            <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            <span class="exp-year">Aug 2019 - May 2023</span>
+            <span class="exp-company">SCSVMV University</span>
+            <span class="exp-role">BE, Electronics &amp; Communications</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="home-left-hero">
-        <h1 class="home-headline">Medha, <span class="role">analytics and data professional</span> at the intersection of numbers and narratives</h1>
-        <p class="home-specialty">data &middot; analytics &middot; research &middot; applied AI</p>
-        <p class="home-blurb">Hi, I'm Medha. I got into data through research, which means I learned early that a number without context is just noise, which is why I never stop at the analysis. I move between technical and stakeholder-facing work without much friction: comfortable in a dataset one hour, in front of a state agency's leadership the next. I like owning a problem end-to-end, asking tough questions before the analysis starts and handing over something my team can actually rely on. Lately I've been leaning into applied AI and data engineering, because the fastest way to trust an analysis is to have built the system that fed it.</p>
-        <div class="hero-buttons home-buttons">
-          <a href="mailto:medhasharma.dev@gmail.com" class="btn btn-dark">Contact me</a>
-          <div class="status-pill"><span class="status-dot"></span>Open to opportunities</div>
-        </div>
+    <section class="section-block" id="contact">
+      <h2>Contact</h2>
+      <div class="contact-list">
+        <a href="mailto:medhasharma.dev@gmail.com" class="contact-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <span class="c-label">Email</span>
+          <span class="c-value">medhasharma.dev@gmail.com &#8599;</span>
+        </a>
+        <a href="https://linkedin.com/in/medhasharma-dev" target="_blank" rel="noopener noreferrer" class="contact-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span class="c-label">LinkedIn</span>
+          <span class="c-value">medhasharma-dev &#8599;</span>
+        </a>
+        <a href="https://github.com/MedhaDev" target="_blank" rel="noopener noreferrer" class="contact-row">
+          <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <span class="c-label">GitHub</span>
+          <span class="c-value">MedhaDev &#8599;</span>
+        </a>
       </div>
-
-    </header>
-
-    <main class="home-right">
-
-      <section class="section-block" id="experience">
-        <h2>Where I've worked</h2>
-        <div class="exp-list">
-
-          <div class="exp-row">
-            <button class="exp-row-head" data-target="exp1">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
-              <span class="exp-year">Oct 2025 - Present</span>
-              <span class="exp-company">Edna Bennett Pierce Prevention Research Center</span>
-              <span class="exp-role">Research Data Management Specialist</span>
-            </button>
-            <div class="exp-detail" id="exp1">
-              <div class="exp-detail-inner">
-                <p>Own end-to-end data management across longitudinal and multi-cohort research studies, building the pipeline that standardizes 250K+ survey records and designing research database schemas with field-level validation. Currently leading the data side of a cost-benefit analysis for a statewide autism services initiative, integrating financial data across three partner organizations.</p>
-                <div class="pill-row">
-                  <span class="pill">Python</span>
-                  <span class="pill">R</span>
-                  <span class="pill">SQL</span>
-                  <span class="pill">AWS (S3, EC2, RDS)</span>
-                  <span class="pill">Snowflake</span>
-                  <span class="pill">Streamlit</span>
-                  <span class="pill">Regression Modeling</span>
-                  <span class="pill">Cost-Benefit Analysis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <button class="exp-row-head" data-target="exp2">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
-              <span class="exp-year">May 2024 - May 2025</span>
-              <span class="exp-company">Pennsylvania State Data Center (PaSDC)</span>
-              <span class="exp-role">Data Analyst</span>
-            </button>
-            <div class="exp-detail" id="exp2">
-              <div class="exp-detail-inner">
-                <p>Migrated 20+ years of legacy demographic data into a governed SQL Server system and built 38 self-service Tableau dashboards for agency partners. Validated demographic forecasting methodologies against Census baselines to improve population projections used in state agency planning across all 67 PA counties, and sole-authored a published research brief on excess moisture and crop loss.</p>
-                <div class="pill-row">
-                  <span class="pill">SQL Server</span>
-                  <span class="pill">T-SQL</span>
-                  <span class="pill">Python</span>
-                  <span class="pill">Excel (Power Query, PivotTables)</span>
-                  <span class="pill">Tableau</span>
-                  <span class="pill">Datawrapper</span>
-                  <span class="pill">Forecasting</span>
-                  <span class="pill">Data Modeling</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <button class="exp-row-head" data-target="exp3">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
-              <span class="exp-year">May 2024 - May 2025</span>
-              <span class="exp-company">Center for Survey Research</span>
-              <span class="exp-role">Research Specialist</span>
-            </button>
-            <div class="exp-detail" id="exp3">
-              <div class="exp-detail-inner">
-                <p>Support qualitative and mixed-methods research for the Center for Survey Research, running interviews and focus groups, coding data thematically, and gathering requirements through stakeholder meetings across multiple state-facing studies - including a statewide internal report on collegiate recovery programs delivered to DDAP.</p>
-                <div class="pill-row">
-                  <span class="pill">NVivo</span>
-                  <span class="pill">Qualitative Research</span>
-                  <span class="pill">Focus Groups</span>
-                  <span class="pill">Thematic Analysis</span>
-                  <span class="pill">Qualitative Coding</span>
-                  <span class="pill">Stakeholder Interviewing</span>
-                  <span class="pill">Requirements Gathering</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <button class="exp-row-head" data-target="exp4">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
-              <span class="exp-year">Aug 2023 - May 2024</span>
-              <span class="exp-company">Pennsylvania State University</span>
-              <span class="exp-role">Graduate Research Assistant</span>
-            </button>
-            <div class="exp-detail" id="exp4">
-              <div class="exp-detail-inner">
-                <p>Supported 15+ faculty-led research projects through data cleaning and statistical analysis, and created SQL instructional materials and tutoring sessions that improved student comprehension in core analytics coursework.</p>
-                <div class="pill-row">
-                  <span class="pill">SQL</span>
-                  <span class="pill">R</span>
-                  <span class="pill">Data Cleaning</span>
-                  <span class="pill">Statistical Analysis</span>
-                  <span class="pill">Teaching</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="exp-row">
-            <button class="exp-row-head" data-target="exp5">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg>
-              <span class="exp-year">Mar 2022 - Aug 2022</span>
-              <span class="exp-company">Defence Research and Development Organisation (DRDO), Advanced Systems Laboratory</span>
-              <span class="exp-role">Engineering Intern</span>
-            </button>
-            <div class="exp-detail" id="exp5">
-              <div class="exp-detail-inner">
-                <p>Designed, simulated, and tested an S-band microstrip patch antenna using Ansys HFSS, running iterative parametric analysis across design configurations, and conducted comparative analysis across 10+ defense technologies for R&amp;D prioritization.</p>
-                <div class="pill-row">
-                  <span class="pill">Ansys HFSS</span>
-                  <span class="pill">RF Engineering</span>
-                  <span class="pill">Antenna Design</span>
-                  <span class="pill">Comparative Analysis</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="section-block" id="education">
-        <h2>Education</h2>
-        <div class="exp-list">
-          <div class="exp-row" style="cursor:default;">
-            <div class="exp-row-head" style="cursor:default;">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
-              <span class="exp-year">Aug 2023 - May 2025</span>
-              <span class="exp-company">Penn State University</span>
-              <span class="exp-role">MS, Information Systems</span>
-            </div>
-          </div>
-          <div class="exp-row" style="cursor:default;">
-            <div class="exp-row-head" style="cursor:default;">
-              <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
-              <span class="exp-year">Aug 2019 - May 2023</span>
-              <span class="exp-company">SCSVMV University</span>
-              <span class="exp-role">BE, Electronics &amp; Communications</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block" id="contact">
-        <h2>Contact</h2>
-        <div class="contact-list">
-          <a href="mailto:medhasharma.dev@gmail.com" class="contact-row">
-            <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-            <span class="c-label">Email</span>
-            <span class="c-value">medhasharma.dev@gmail.com &#8599;</span>
-          </a>
-          <a href="https://linkedin.com/in/medhasharma-dev" target="_blank" rel="noopener noreferrer" class="contact-row">
-            <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            <span class="c-label">LinkedIn</span>
-            <span class="c-value">medhasharma-dev &#8599;</span>
-          </a>
-          <a href="https://github.com/MedhaDev" target="_blank" rel="noopener noreferrer" class="contact-row">
-            <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            <span class="c-label">GitHub</span>
-            <span class="c-value">MedhaDev &#8599;</span>
-          </a>
-        </div>
-        <p style="color:var(--ink-soft); font-size:0.85rem; margin-top:16px;">Open to talking about roles, projects, or just about anything - reach out.</p>
-      </section>
-
-      <p style="color:var(--ink-soft); font-size:0.8rem; margin-top:64px; text-align:right;">&copy; 2026 Medha Devalraj</p>
-
-    </main>
+      <p style="color:var(--ink-soft); font-size:0.85rem; margin-top:16px;">Open to talking about roles, projects, or just about anything - reach out.</p>
+    </section>
 
   </div>
+</main>
 
+<footer>
+  <div class="wrap">
+    <span class="footer-note">Open to talking about roles, projects, or just about anything - reach out.</span>
+    <div class="footer-links">
+      <a href="mailto:medhasharma.dev@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/medhasharma-dev" target="_blank">LinkedIn</a>
+      <a href="https://github.com/MedhaDev" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+
+<nav class="mobile-menu" aria-label="Site menu">
+  <div class="mobile-menu-panel" id="mobileMenu" hidden>
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="fun.html">Fun</a>
+      <a href="about.html">About</a>
+  </div>
+  <button type="button" class="mobile-menu-btn" aria-expanded="false" aria-controls="mobileMenu">
+    <svg class="mm-open" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    <svg class="mm-close" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    Menu
+  </button>
+</nav>
+
+<script src="nav.js" defer></script>
 <script>
+function setOpen(row, open) {
+  const d = row.querySelector('.exp-detail');
+  row.classList.toggle('open', open);
+  if (d) d.style.maxHeight = open ? d.scrollHeight + 'px' : '0px';
+}
 document.querySelectorAll('.exp-row-head[data-target]').forEach(btn => {
+  btn.setAttribute('aria-expanded', 'false');
   btn.addEventListener('click', () => {
     const row = btn.closest('.exp-row');
     const wasOpen = row.classList.contains('open');
-    document.querySelectorAll('.exp-row').forEach(r => r.classList.remove('open'));
-    if (!wasOpen) row.classList.add('open');
+    document.querySelectorAll('.exp-row.open').forEach(r => {
+      setOpen(r, false);
+      r.querySelector('.exp-row-head').setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) { setOpen(row, true); btn.setAttribute('aria-expanded', 'true'); }
   });
+});
+// Text re-wraps when the screen rotates or resizes, so re-measure the open row.
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.exp-row.open').forEach(r => setOpen(r, true));
 });
 </script>
 
