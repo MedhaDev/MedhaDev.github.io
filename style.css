@@ -430,13 +430,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .mobile-menu-btn:focus-visible, .mobile-menu-panel a:focus-visible { outline-color: var(--btn-dark-text); }
 
 @media(max-width: 640px) {
-  .exp-row-head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 16px 4px;
-}
   .cs-meta { grid-template-columns: repeat(2,1fr); }
   .cs-stats { grid-template-columns: 1fr; }
   .nav-bar { padding-top: 24px; }
@@ -626,11 +619,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .exp-row.open .exp-row-head[data-target]:hover .exp-caret { transform: rotate(180deg) translateY(2px); }
 }
 
-@media (max-width: 640px) {
-  /* rows stack on phones, so pin the caret to the top-right corner */
-  .exp-row-head[data-target] { padding-right: 32px; }
-  .exp-caret { position: absolute; top: 18px; right: 4px; }
-}
 
 /* Availability line under the contact list */
 .availability-note {
@@ -644,29 +632,56 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .availability-note .c-icon { opacity: 0.7; }
 
 
-/* ---------- Work / Fun rows on phones only ----------
-   Desktop keeps its original layout (title left, year right) untouched.
-   On phones there isn't room for the year beside a long title, so:
-     [icon] [title, full width ............]
+/* ---------- Work / Fun rows (all screen sizes) ----------
+     [icon] [title .......................]
             [year →]
             [org]
             [description]
             [pills]
-   The icon owns its own column, so every icon lines up down the page and
-   everything else starts on one clean vertical line under the title. */
+   The icon owns its own column, so icons line up down the page and all text
+   starts on one vertical line under the title. Same layout on phone and
+   desktop; phones only get slightly smaller type. */
+.item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+}
+.item-top, .item-title-row { display: contents; }
+.item-icon  { grid-column: 1; grid-row: 1; width: 20px; height: 20px; margin-top: 3px; }
+.item-title { grid-column: 2; grid-row: 1; line-height: 1.3; }
+.item-year  { grid-column: 2; grid-row: 2; margin-top: 12px; }
+.item-org   { grid-column: 2; grid-row: 3; margin-top: 6px; }
+.item-desc  { grid-column: 2; grid-row: 4; margin-top: 16px; }
+.item-pills { grid-column: 2; grid-row: 5; margin-top: 16px; }
 @media (max-width: 640px) {
-  .item {
+  .item { column-gap: 12px; padding: 24px 0; }
+  .item-title { font-size: 1.1rem; }
+  .item-year { font-size: 0.8rem; }
+}
+
+/* ---------- Home: experience & education rows on phones ----------
+   Desktop keeps its table layout (icon | dates | company | role | caret).
+   Phones use the same pattern as the Work page:
+     [icon] [Company ..................] [caret]
+            [dates]
+            [role]
+            (expanded details also start under the company name) */
+@media (max-width: 640px) {
+  .exp-row-head,
+  .exp-row-head[data-target] {
     display: grid;
     grid-template-columns: 20px minmax(0, 1fr);
     column-gap: 12px;
+    row-gap: 0;
     align-items: start;
-    padding: 24px 0;
+    padding: 20px 4px;
   }
-  .item-top, .item-title-row { display: contents; }
-  .item-icon  { grid-column: 1; grid-row: 1; width: 20px; height: 20px; margin-top: 3px; }
-  .item-title { grid-column: 2; grid-row: 1; font-size: 1.1rem; line-height: 1.3; }
-  .item-year  { grid-column: 2; grid-row: 2; margin-top: 12px; font-size: 0.8rem; }
-  .item-org   { grid-column: 2; grid-row: 3; margin-top: 6px; }
-  .item-desc  { grid-column: 2; grid-row: 4; margin-top: 16px; }
-  .item-pills { grid-column: 2; grid-row: 5; margin-top: 16px; }
+  .exp-row-head[data-target] { padding-right: 36px; }
+  .exp-icon    { grid-column: 1; grid-row: 1; margin-top: 1px; }
+  .exp-company { grid-column: 2; grid-row: 1; line-height: 1.35; }
+  .exp-year    { grid-column: 2; grid-row: 2; margin-top: 12px; font-size: 0.8rem; }
+  .exp-role    { grid-column: 2; grid-row: 3; margin-top: 6px; }
+  .exp-caret   { position: absolute; top: 21px; right: 4px; }
+  .exp-detail-inner { padding-left: 36px; }
 }
