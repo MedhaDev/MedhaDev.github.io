@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About - Medha Devalraj</title>
-<meta name="theme-color" content="#e6e1e6">
-<link rel="stylesheet" href="style.css?v=19">
+<meta name="description" content="Medha Devalraj, a data analyst who builds the systems behind the numbers: SQL, Python, dbt and R, plus the research and stakeholder work that gives the numbers context.">
+<meta property="og:title" content="About - Medha Devalraj">
+<meta property="og:description" content="Medha Devalraj, a data analyst who builds the systems behind the numbers: SQL, Python, dbt and R, plus the research and stakeholder work that gives the numbers context.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#e7e1ef">
+<link rel="stylesheet" href="style.css?v=23">
 </head>
 <body class="page-about">
 
@@ -37,41 +41,94 @@
       <p style="color:var(--ink-soft); font-size:0.98rem; line-height:1.85; margin-top:16px;">The rabbit holes run deep and I don't always resurface on schedule. I've made peace with that.</p>
     </div>
 
-    <div class="about-category-grid">
-      <div class="about-category">
-        <p class="about-category-label">01. Myself</p>
-        <div class="about-photo-row">
-          <img class="about-photo" src="images/about/myself/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Medha">
-          <img class="about-photo" src="images/about/myself/2.jpeg" width="684" height="818" style="--ar:0.8362" loading="lazy" decoding="async" alt="Medha">
-          <img class="about-photo" src="images/about/myself/3.jpeg" width="1218" height="1600" style="--ar:0.7612" loading="lazy" decoding="async" alt="Medha">
-        </div>
+    <div class="folder-grid">
+      <div class="folder-item">
+        <button type="button" class="folder" data-gallery="gallery-myself" aria-haspopup="dialog" style="--f-back:#dccc96; --f-front:#e9ddb4;">
+          <span class="folder-shape" aria-hidden="true">
+            <span class="folder-back"></span>
+            <span class="folder-papers"></span>
+            <span class="folder-front"></span>
+          </span>
+          <span class="folder-label">01. Myself</span>
+          <span class="folder-count"></span>
+        </button>
+        <dialog class="gallery" id="gallery-myself" aria-labelledby="gallery-myself-title">
+          <div class="gallery-head">
+            <h2 id="gallery-myself-title">Myself</h2>
+            <button type="button" class="gallery-close" aria-label="Close Myself photos">&times;</button>
+          </div>
+          <div class="about-photo-row">
+            <img class="about-photo" src="images/about/myself/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Medha">
+            <img class="about-photo" src="images/about/myself/2.jpeg" width="684" height="818" style="--ar:0.8362" loading="lazy" decoding="async" alt="Medha">
+            <img class="about-photo" src="images/about/myself/3.jpeg" width="1218" height="1600" style="--ar:0.7612" loading="lazy" decoding="async" alt="Medha">
+          </div>
+        </dialog>
       </div>
-
-      <div class="about-category">
-        <p class="about-category-label">02. Mountains</p>
-        <div class="about-photo-row">
-          <img class="about-photo" src="images/about/mountains/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
-          <img class="about-photo" src="images/about/mountains/2.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Mountain view">
-          <img class="about-photo" src="images/about/mountains/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
-        </div>
+      <div class="folder-item">
+        <button type="button" class="folder" data-gallery="gallery-mountains" aria-haspopup="dialog" style="--f-back:#a9bccf; --f-front:#c3d1df;">
+          <span class="folder-shape" aria-hidden="true">
+            <span class="folder-back"></span>
+            <span class="folder-papers"></span>
+            <span class="folder-front"></span>
+          </span>
+          <span class="folder-label">02. Mountains</span>
+          <span class="folder-count"></span>
+        </button>
+        <dialog class="gallery" id="gallery-mountains" aria-labelledby="gallery-mountains-title">
+          <div class="gallery-head">
+            <h2 id="gallery-mountains-title">Mountains</h2>
+            <button type="button" class="gallery-close" aria-label="Close Mountains photos">&times;</button>
+          </div>
+          <div class="about-photo-row">
+            <img class="about-photo" src="images/about/mountains/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
+            <img class="about-photo" src="images/about/mountains/2.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Mountain view">
+            <img class="about-photo" src="images/about/mountains/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Mountain view">
+          </div>
+        </dialog>
       </div>
-
-      <div class="about-category">
-        <p class="about-category-label">03. Photography</p>
-        <div class="about-photo-row">
-          <img class="about-photo" src="images/about/photography/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Photograph">
-          <img class="about-photo" src="images/about/photography/2.jpeg" width="1347" height="1600" style="--ar:0.8419" loading="lazy" decoding="async" alt="Photograph">
-          <img class="about-photo" src="images/about/photography/3.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Photograph">
-        </div>
+      <div class="folder-item">
+        <button type="button" class="folder" data-gallery="gallery-photography" aria-haspopup="dialog" style="--f-back:#b1a3cb; --f-front:#c8bdde;">
+          <span class="folder-shape" aria-hidden="true">
+            <span class="folder-back"></span>
+            <span class="folder-papers"></span>
+            <span class="folder-front"></span>
+          </span>
+          <span class="folder-label">03. Photography</span>
+          <span class="folder-count"></span>
+        </button>
+        <dialog class="gallery" id="gallery-photography" aria-labelledby="gallery-photography-title">
+          <div class="gallery-head">
+            <h2 id="gallery-photography-title">Photography</h2>
+            <button type="button" class="gallery-close" aria-label="Close Photography photos">&times;</button>
+          </div>
+          <div class="about-photo-row">
+            <img class="about-photo" src="images/about/photography/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Photograph">
+            <img class="about-photo" src="images/about/photography/2.jpeg" width="1347" height="1600" style="--ar:0.8419" loading="lazy" decoding="async" alt="Photograph">
+            <img class="about-photo" src="images/about/photography/3.jpeg" width="1200" height="1600" style="--ar:0.7500" loading="lazy" decoding="async" alt="Photograph">
+          </div>
+        </dialog>
       </div>
-
-      <div class="about-category">
-        <p class="about-category-label">04. Community</p>
-        <div class="about-photo-row">
-          <img class="about-photo" src="images/about/community/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
-          <img class="about-photo" src="images/about/community/2.jpeg" width="1264" height="843" style="--ar:1.4994" loading="lazy" decoding="async" alt="Community event">
-          <img class="about-photo" src="images/about/community/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
-        </div>
+      <div class="folder-item">
+        <button type="button" class="folder" data-gallery="gallery-community" aria-haspopup="dialog" style="--f-back:#d8adb6; --f-front:#e6c6cc;">
+          <span class="folder-shape" aria-hidden="true">
+            <span class="folder-back"></span>
+            <span class="folder-papers"></span>
+            <span class="folder-front"></span>
+          </span>
+          <span class="folder-label">04. Community</span>
+          <span class="folder-count"></span>
+        </button>
+        <dialog class="gallery" id="gallery-community" aria-labelledby="gallery-community-title">
+          <div class="gallery-head">
+            <h2 id="gallery-community-title">Community</h2>
+            <button type="button" class="gallery-close" aria-label="Close Community photos">&times;</button>
+          </div>
+          <div class="about-photo-row">
+            <img class="about-photo" src="images/about/community/1.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
+            <img class="about-photo" src="images/about/community/2.jpeg" width="1264" height="843" style="--ar:1.4994" loading="lazy" decoding="async" alt="Community event">
+            <img class="about-photo" src="images/about/community/3.jpeg" width="1600" height="1200" style="--ar:1.3333" loading="lazy" decoding="async" alt="Community event">
+          </div>
+        </dialog>
       </div>
     </div>
 
@@ -104,6 +161,7 @@
   </button>
 </nav>
 
-<script src="nav.js?v=19" defer></script>
+<script src="nav.js?v=20" defer></script>
+<script src="gallery.js?v=20" defer></script>
 </body>
 </html>
