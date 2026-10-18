@@ -4,10 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Longitudinal Study Infrastructure &amp; Statewide Cost-Benefit Analysis - Medha Devalraj</title>
-<meta name="theme-color" content="#f2e3dc">
-<link rel="stylesheet" href="../style.css?v=19">
+<meta name="theme-color" content="#dfe6ee">
+<link rel="stylesheet" href="../style.css?v=23">
 </head>
 <body class="page-work">
+
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <!-- Roughens mark edges slightly so they read as drawn by hand -->
+  <filter id="hand-wobble" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="7" result="noise"></feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7"></feDisplacementMap>
+  </filter>
+</svg>
 
 <nav class="site-nav" aria-label="Primary">
   <div class="wrap nav-bar">
@@ -26,7 +34,7 @@
 <div class="wrap">
 
   <a href="../work.html" class="cs-back">&larr; Back to Work</a>
-  <svg class="cs-org-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+  <svg class="cs-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand-wobble)" aria-hidden="true"><path d="M3.6 5.8Q8.4 6.1 11.2 10.4Q12.6 12.3 14.6 12.2"></path><path d="M3.4 12.3Q9 11.8 14.6 12.2"></path><path d="M3.7 18.4Q8.6 18 11.3 13.9Q12.5 12.2 14.6 12.2"></path><path d="M14.6 12.2Q17.5 12 20.4 12.3"></path><path d="M17.6 9.4Q19.2 10.9 20.4 12.3Q19.1 13.7 17.4 15"></path></svg>
   <span class="cs-tag">Edna Bennett Pierce Prevention Research Center &middot; Current</span>
   <h1 class="cs-title">Longitudinal Study Infrastructure &amp; Statewide Cost-Benefit Analysis</h1>
 
@@ -38,41 +46,38 @@
   </div>
 
   <div class="cs-overview">
-    <h2>A 25-year study needed a data pipeline it never had - and a statewide program needed a way to compare costs that don't naturally compare.</h2>
-    <p>The prevention studies at the center span more than two decades, which meant the data was never designed to be analyzed together - different formats, different variable names for the same thing, different missing-data conventions depending on which year or cohort collected it. That was the first project. The second came later and looked nothing like the first on paper: leading the data side of a cost-benefit analysis for a statewide autism services initiative, which meant pulling financial data out of three separate organizations' systems and making it comparable at all.</p>
+    <h2>Building the data pipeline for a 25-year prevention study, then making three organizations&rsquo; spending comparable for a statewide cost-benefit analysis.</h2>
+    <p>The prevention studies at the Edna Bennett Pierce Prevention Research Center go back more than two decades. The data was never designed to be analyzed together: formats, variable names and missing-data codes changed depending on which year or cohort collected them.</p>
+    <p>My first project was the pipeline that brings all of it into one consistent structure. The second looks nothing like it on paper: I&rsquo;m leading the data side of a cost-benefit analysis for a statewide autism services initiative, which means pulling financial data from three partner organizations and making it comparable.</p>
   </div>
 
   <div class="cs-stats">
-      <div><span class="cs-stat-num">250K+</span><div class="cs-stat-label">survey records standardized across longitudinal and multi-cohort studies</div></div>
-      <div><span class="cs-stat-num">40%</span><div class="cs-stat-label">cut in report turnaround time for investigators</div></div>
-      <div><span class="cs-stat-num">3</span><div class="cs-stat-label">partner organizations' financial data being mapped into one model</div></div>
+      <div><span class="cs-stat-num">250K+</span><div class="cs-stat-label">survey records standardized</div></div>
+      <div><span class="cs-stat-num">40%</span><div class="cs-stat-label">faster report turnaround for investigators</div></div>
+      <div><span class="cs-stat-num">3</span><div class="cs-stat-label">partner organizations&rsquo; financial data in one model</div></div>
   </div>
 
   <div class="cs-journey">
     <div class="cs-journey-block">
-      <h3>A study older than the pipeline it needed</h3>
-      <p>Building the pipeline meant designing research database schemas with field-level validation, branching logic, and relational constraints robust enough to handle multi-format ingestion across a 25+ year study - then applying systematic missing-data handling rules consistently across every instrument, instead of each one being patched by hand.</p>
+      <h3>One structure for 25 years of surveys</h3>
+      <!-- IMAGE: pipeline diagram: survey sources by year and cohort &rarr; validation &rarr; standardized database &rarr; reports -->
+      <p>I designed research database schemas with field-level validation, branching logic and relational constraints, so files arriving in different formats from different years land in the same structure. Missing data is handled by one set of rules applied to every instrument, instead of each survey being patched by hand. So far the pipeline has standardized more than 250,000 survey records.</p>
+    </div>
+    <div class="cs-journey-block">
+      <h3>Checks instead of manual cleaning</h3>
+      <p>Validation checks now run automatically across the center&rsquo;s behavioral health studies. Investigators used to wait for data to be cleaned by hand before they could start analysis; now report turnaround is about 40% faster.<!-- TODO: add the before and after, e.g. "from about X days to Y days". --></p>
     </div>
     <div class="cs-journey-block">
       <h3>Three organizations, one cost model</h3>
-      <p>This cost-benefit work started as a data problem before it was a statistics problem: three partner organizations track spending in three different systems, using different categories for what's effectively the same activity. Before any cost-benefit analysis could happen, someone had to define how a line item in one organization's system maps to a line item in another's - and make that mapping defensible enough that all three would trust the resulting comparison.</p>
+      <!-- IMAGE: mapping diagram: three organizations&rsquo; cost categories on the left, the shared cost model on the right -->
+      <p>The cost-benefit work started as a data problem. Each partner tracks spending in its own systems, using its own categories, often for the same activity. Before any analysis can happen, someone has to decide how a line item in one organization&rsquo;s system maps to a line item in another&rsquo;s, and make that mapping defensible enough that all three trust the comparison. I&rsquo;m leading that work, including integrating data from the partners&rsquo; ERP systems. The analysis is still in progress, so results aren&rsquo;t public yet.</p>
+    </div>
+    <div class="cs-journey-block">
+      <h3>Keeping up with the research</h3>
+      <!-- IMAGE: screenshot of the literature dashboard (with sample data if needed) -->
+      <p>I also built AWS-hosted Streamlit dashboards that pull from the Overton and OpenAlex APIs to track more than 10,000 published articles for the team.<!-- TODO: one sentence on what the team uses this for. --></p>
     </div>
   </div>
-
-  <ul class="cs-win-list">
-      <li class="cs-win-item">
-        <h4>Cut report turnaround time 40%</h4>
-        <p>Automated validation checks across the center's behavioral health studies meant investigators stopped waiting on manual data cleaning before analysis could start.</p>
-      </li>
-      <li class="cs-win-item">
-        <h4>Trusted with the cross-org financial work</h4>
-        <p>Asked to lead the ERP data integration for the statewide initiative - work that sits outside a typical data-management role, built on the pipeline work that came before it.</p>
-      </li>
-      <li class="cs-win-item">
-        <h4>Built the literature-monitoring layer too</h4>
-        <p>AWS-hosted Streamlit dashboards with REST API integrations (Overton, OpenAlex) now track 10,000+ published articles for the team.</p>
-      </li>
-  </ul>
 
 </div>
 </main>
@@ -103,6 +108,6 @@
   </button>
 </nav>
 
-<script src="../nav.js?v=19" defer></script>
+<script src="../nav.js?v=20" defer></script>
 </body>
 </html>

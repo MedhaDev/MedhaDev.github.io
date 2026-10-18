@@ -4,10 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SQL Database Optimization &amp; Migration - Medha Devalraj</title>
-<meta name="theme-color" content="#f2e3dc">
-<link rel="stylesheet" href="../style.css?v=19">
+<meta name="theme-color" content="#dfe6ee">
+<link rel="stylesheet" href="../style.css?v=23">
 </head>
 <body class="page-work">
+
+<svg class="svg-defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <!-- Roughens mark edges slightly so they read as drawn by hand -->
+  <filter id="hand-wobble" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" seed="7" result="noise"></feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.7"></feDisplacementMap>
+  </filter>
+</svg>
 
 <nav class="site-nav" aria-label="Primary">
   <div class="wrap nav-bar">
@@ -26,7 +34,7 @@
 <div class="wrap">
 
   <a href="../work.html" class="cs-back">&larr; Back to Work</a>
-  <svg class="cs-org-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+  <svg class="cs-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" filter="url(#hand-wobble)" aria-hidden="true"><path d="M5.2 6.4Q5.6 3.9 12.1 3.8Q18.6 4 18.9 6.5Q18.4 8.9 12 9Q5.5 8.8 5.2 6.4Z"></path><path d="M5.2 6.6Q4.9 12.4 5.4 17.9"></path><path d="M18.9 6.6Q19.2 12.3 18.7 17.8"></path><path d="M5.4 17.9Q6.1 20.3 12.1 20.4Q18.1 20.2 18.7 17.8"></path><path d="M5.3 12.2Q6.2 14.5 12 14.6Q17.9 14.4 18.9 12.1"></path></svg>
   <span class="cs-tag">Pennsylvania State Data Center (PaSDC) &middot; 2024-2025</span>
   <h1 class="cs-title">SQL Database Optimization &amp; Migration</h1>
 
@@ -38,41 +46,35 @@
   </div>
 
   <div class="cs-overview">
-    <h2>Twenty years of demographic data was sitting in Access - the migration to SQL Server was the whole project.</h2>
-    <p>The Pennsylvania State Data Center (PaSDC) had two decades of legacy demographic records living in Access, spread across five concurrent research projects with no consistent schema or documentation between them. Before any dashboard or analysis could happen, that data needed a real home - normalized, indexed, and documented well enough that the next analyst wouldn't have to reverse-engineer it from scratch.</p>
+    <h2>Migrating 20 years of historical demographic data from a legacy system into a documented SQL Server database.</h2>
+    <p>The Pennsylvania State Data Center kept two decades of demographic records in Microsoft Access, split across five research projects running at the same time. Each project had its own structure and almost no documentation, so answering a simple question meant knowing which file to open and what its columns used to mean.</p>
+    <p>I moved the records into SQL Server, designed a normalized schema for them, and documented it well enough that the next analyst wouldn&rsquo;t have to reverse-engineer anything.</p>
   </div>
 
   <div class="cs-stats">
-      <div><span class="cs-stat-num">20+</span><div class="cs-stat-label">years of legacy demographic data migrated</div></div>
-      <div><span class="cs-stat-num">30%</span><div class="cs-stat-label">cut in query execution and processing time</div></div>
-      <div><span class="cs-stat-num">5</span><div class="cs-stat-label">concurrent research projects supported by the new schema</div></div>
+      <div><span class="cs-stat-num">20+</span><div class="cs-stat-label">years of demographic records migrated</div></div>
+      <div><span class="cs-stat-num">30%</span><div class="cs-stat-label">less query and processing time</div></div>
+      <div><span class="cs-stat-num">5</span><div class="cs-stat-label">research projects on one shared schema</div></div>
   </div>
 
   <div class="cs-journey">
     <div class="cs-journey-block">
-      <h3>From Access to SQL Server</h3>
-      <p>The migration itself was straightforward in theory and messy in practice - designing normalized schemas and table structures that could actually hold two decades of records without losing the quirks and exceptions baked into years of ad hoc data entry. Getting the structure right up front was what made everything after it possible.</p>
+      <h3>Designing the schema</h3>
+      <!-- IMAGE: before/after diagram: five separate Access databases on the left, one normalized SQL Server schema on the right -->
+      <p>Twenty years of ad hoc data entry leaves quirks: fields that changed meaning over time, exceptions typed in by hand. I designed normalized tables that could hold all of it without flattening those quirks away, then indexed them. Together, the new schema and indexes cut query and processing time by about 30%.<!-- TODO: say how this was measured, e.g. "the median runtime of our N most-used queries fell from Xs to Ys". Only include what you actually measured. --></p>
     </div>
     <div class="cs-journey-block">
-      <h3>Building the reference layer</h3>
-      <p>A migration isn't finished when the data lands - it's finished when the next person can find anything in it. Schema dictionaries, metadata inventories, and update logs went in across all five concurrent projects, so retrieval stopped depending on institutional memory.</p>
+      <h3>Checking nothing was lost</h3>
+      <p>Every historical record carried over, and the analyses already built on the old data kept working.<!-- TODO: add how you verified this, e.g. "confirmed with row counts per table and by re-running existing reports on both systems". Only include checks you actually did. --></p>
+    </div>
+    <div class="cs-journey-block">
+      <h3>Writing it down</h3>
+      <!-- IMAGE: a short excerpt from a schema dictionary (with any sensitive field names changed) -->
+      <p>A migration isn&rsquo;t finished when the data lands; it&rsquo;s finished when someone else can find things in it. I wrote schema dictionaries, metadata inventories and update logs for all five projects. Before, different analysts assumed different meanings for the same field, and their numbers disagreed. With one shared dictionary, those recurring discrepancies stopped.</p>
     </div>
   </div>
 
-  <ul class="cs-win-list">
-      <li class="cs-win-item">
-        <h4>Migrated 20+ years of records with zero data loss</h4>
-        <p>Every historical record carried over, normalized and indexed, without breaking the analyses already built on top of it.</p>
-      </li>
-      <li class="cs-win-item">
-        <h4>Cut query execution and processing time by 30%</h4>
-        <p>Indexing and schema redesign turned slow, ad hoc queries into something researchers could actually rely on.</p>
-      </li>
-      <li class="cs-win-item">
-        <h4>Eliminated recurring data discrepancies</h4>
-        <p>Standardized schema dictionaries closed the gap between what different analysts assumed a field meant.</p>
-      </li>
-  </ul>
+  <!-- TODO: "AWS" is listed under Tools but never mentioned in the text. Add one sentence on what it was used for, or remove it from Tools. -->
 
 </div>
 </main>
@@ -103,6 +105,6 @@
   </button>
 </nav>
 
-<script src="../nav.js?v=19" defer></script>
+<script src="../nav.js?v=20" defer></script>
 </body>
 </html>
