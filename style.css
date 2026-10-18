@@ -947,4 +947,3 @@ body:has(.gallery[open]) { overflow: hidden; }
 
 /* ---------- Hand-drawn marks ---------- */
 .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
-.cs-mark { display: block; width: 34px; height: 34px; color: var(--ink); margin-bottom: 14px; }
