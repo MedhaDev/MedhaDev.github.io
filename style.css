@@ -3,22 +3,22 @@
 :root {
   --ink: #1a1919;
   --ink-soft: #1a1919b3;
-  --pill-bg: #d2d1ca;
+  --pill-bg: rgba(26,25,25,0.08); /* tints with each page color */
   --pill-text: #1a1919;
   --line: rgba(26,25,25,0.14);
   --btn-dark: #1a1919;
-  --btn-dark-text: #eae8e3;
+  --btn-dark-text: #f2ecd6;
   --font-mono: 'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --gutter: 1.5rem; /* Robin's page gutter: 24px at every width */
+  --gutter: 1.5rem; /* page gutter: 24px at every width */
   --shadow-floating: 0 0.75rem 1.5rem rgba(26,25,25,0.14);
 }
 
-/* Rotating page paper (warm greige family, per Robin's colors.css comment: "Warm greige neutrals borrowed from terrain.com") */
-body.page-home   { background: #eae8e3; }
-body.page-work   { background: #f2e3dc; }
-body.page-fun    { background: #dfe3ea; }
-body.page-about  { background: #e6e1e6; }
+/* Page paper: one muted pastel per page */
+body.page-home   { background: #f2ecd6; } /* butter yellow */
+body.page-work   { background: #dfe6ee; } /* dusty blue */
+body.page-fun    { background: #f2e1e4; } /* blush pink */
+body.page-about  { background: #e7e1ef; } /* soft lavender */
 
 * { box-sizing: border-box; }
 
@@ -155,7 +155,7 @@ main { flex: 1; }
 }
 .exp-row-head {
   display: grid;
-  grid-template-columns: 24px 150px 1fr 1fr;
+  grid-template-columns: 150px 1fr 1fr;
   gap: 16px;
   align-items: center;
   padding: 16px 4px;
@@ -168,7 +168,6 @@ main { flex: 1; }
   font-size: 0.95rem;
   color: var(--ink);
 }
-.exp-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-soft); }
 .exp-row-head:hover { opacity: 0.7; }
 .exp-year { color: var(--ink-soft); }
 .exp-company { font-weight: 700; }
@@ -243,7 +242,6 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   font-size: 1.15rem;
 }
 .item-title-row { display: flex; align-items: center; gap: 10px; }
-.item-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--ink-soft); }
 .item-year { color: var(--ink-soft); font-size: 0.85rem; white-space: nowrap; }
 .item-org { color: var(--ink-soft); font-size: 0.85rem; margin-top: 4px; }
 .item-desc { color: var(--ink-soft); font-size: 0.92rem; margin-top: 10px; max-width: 640px; line-height: 1.7; }
@@ -265,6 +263,10 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
 .cs-journey-block { max-width: 660px; margin-bottom: 26px; }
 .cs-journey-block h3 { font-size: 1.05rem; margin-bottom: 8px; }
 .cs-journey-block p { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.75; }
+.cs-overview p + p, .cs-journey-block p + p { margin-top: 12px; }
+.cs-journey-block ul { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.75; padding-left: 20px; margin: 8px 0 0; }
+.cs-journey-block li + li { margin-top: 4px; }
+.cs-journey-block strong { color: var(--ink); font-weight: 600; }
 .cs-win-list { list-style: none; padding: 0; margin: 0; }
 .cs-win-item { padding: 16px 0; border-top: 1px solid var(--line); }
 .cs-win-item:last-child { border-bottom: 1px solid var(--line); }
@@ -334,7 +336,7 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   margin-bottom: 4px;
 }
 
-/* ---------- Contact row list (exact match to Robin's ContactSection.astro) ---------- */
+/* ---------- Contact row list ---------- */
 .contact-list {
   margin-top: 16px;
   border-top: 1px dotted rgba(26,25,25,0.3);
@@ -363,7 +365,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .footer-links a:hover { color: var(--ink); }
 .footer-note { font-size: 0.85rem; color: var(--ink-soft); }
 
-/* ---------- Mobile menu (Robin's pattern: floating pill at the bottom, in thumb reach) ---------- */
+/* ---------- Mobile menu (floating pill at the bottom, in thumb reach) ---------- */
 .mobile-menu { display: none; }
 @media (max-width: 720px) {
   .nav-bar .nav-links, .nav-bar .nav-end { display: none; }
@@ -474,7 +476,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .cursor-tooltip-label {
   margin-top: 8px;
   background: var(--ink);
-  color: var(--pill-bg);
+  color: #f2ecd6;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   padding: 5px 12px;
@@ -488,32 +490,156 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .cursor-tooltip { display: none !important; }
 }
 
-/* ---------- Role icons (experience rows + case study pages) ---------- */
-.cs-org-logo {
-  width: 26px;
-  height: 26px;
-  color: var(--ink-soft);
-  margin-bottom: 14px;
+
+/* ---------- About page folders ----------
+   Each folder is a button: the first photos of its gallery peek out of the
+   folder, and on hover/focus the front flap tips forward while the photos
+   fan out. One --open value (0 to 1) drives every part of that motion. */
+.folder-grid {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px 24px;
+}
+.folder {
+  --open: 0;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.folder:focus-visible { --open: 1; outline-offset: 6px; border-radius: 4px; }
+.folder-shape {
+  position: relative;
   display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  margin: 12% 0 14px;
+  perspective: 700px;
+}
+.folder-back {
+  position: absolute;
+  inset: 0;
+  background: var(--f-back);
+  border-radius: 0 10px 10px 10px;
+}
+.folder-back::before { /* the tab */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - 1px);
+  width: 40%;
+  height: 10%;
+  background: inherit;
+  border-radius: 8px 8px 0 0;
+}
+.folder-papers { position: absolute; inset: 0; }
+.folder-paper {
+  --rot0: -4deg; --rot: -10deg; --dx0: -10%; --dx: -68%; --lift: 26%;
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  width: 46%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 3px solid #fbfaf7;
+  border-radius: 3px;
+  background: #fbfaf7;
+  box-shadow: 0 2px 6px rgba(26,25,25,0.18);
+  transform-origin: 50% 100%;
+  transform:
+    translateX(calc(-50% + var(--dx0) + var(--dx) * var(--open)))
+    translateY(calc(var(--lift) * var(--open) * -1))
+    rotate(calc(var(--rot0) + var(--rot) * var(--open)));
+}
+.folder-paper:nth-child(2) { --rot0: 2deg; --rot: -2deg; --dx0: 0%; --dx: 0%; --lift: 40%; }
+.folder-paper:nth-child(3) { --rot0: 6deg; --rot: 8deg; --dx0: 10%; --dx: 68%; --lift: 22%; }
+.folder-front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 72%;
+  background: var(--f-front);
+  border-radius: 10px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.35) inset;
+  transform-origin: 50% 100%;
+  transform: rotateX(calc(var(--open) * -48deg)) scaleY(calc(1 - 0.12 * var(--open)));
+}
+.folder-label { font-family: var(--font-sans); font-weight: 600; font-size: 1rem; }
+.folder-count { font-size: 0.8rem; color: var(--ink-soft); }
+@media (hover: hover) {
+  .folder:hover { --open: 1; }
+  .folder:hover .folder-label { text-decoration: underline; text-underline-offset: 4px; }
+}
+/* Touch screens can't hover, so folders rest half open to show what's inside */
+@media (hover: none) { .folder { --open: 0.55; } }
+@media (prefers-reduced-motion: no-preference) {
+  .folder-paper, .folder-front { transition: transform 280ms cubic-bezier(.3,.7,.3,1); }
+}
+@media (max-width: 720px) {
+  .folder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; margin-top: 56px; }
 }
 
-/* ---------- About page photo categories ----------
-   Each category gets the full content width. Every photo carries its own
-   aspect ratio (--ar, set in about.html); using that ratio as the flex-grow
-   value makes all photos in a row the exact same height while filling the
-   width, so nothing is cropped and nothing is left dangling. */
-.about-category-grid {
-  margin-top: 64px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 48px;
+/* ---------- Gallery dialog (opened from a folder) ---------- */
+.gallery {
+  width: min(1000px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 48px);
+  padding: 0 20px 20px;
+  border: 0;
+  border-radius: 14px;
+  background: #f5f2f8;
+  color: var(--ink);
+  box-shadow: 0 24px 60px rgba(26,25,25,0.3);
+  overflow: auto;
+  overscroll-behavior: contain;
 }
-.about-category-label {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin: 0 0 10px;
-  letter-spacing: 0.02em;
+.gallery::backdrop { background: rgba(26,25,25,0.55); }
+.gallery-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 12px;
+  background: inherit;
 }
+.gallery-head h2 { font-size: 1.25rem; }
+.gallery-close {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.gallery-close:hover { background: rgba(26,25,25,0.06); }
+body:has(.gallery[open]) { overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .gallery[open] { animation: gallery-in 220ms cubic-bezier(.3,.7,.3,1); }
+  .gallery[open]::backdrop { animation: gallery-fade 220ms ease-out; }
+}
+@keyframes gallery-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes gallery-fade { from { opacity: 0; } }
+
+/* Photos inside a gallery. Every photo carries its own aspect ratio (--ar,
+   set in about.html); using that ratio as the flex-grow value makes all
+   photos in a row the same height while filling the width, uncropped. */
 .about-photo-row {
   display: flex;
   flex-wrap: wrap;
@@ -532,9 +658,89 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 }
 /* Phones: first photo spans the full width, the other two share a row */
 @media (max-width: 560px) {
-  .about-category-grid { gap: 36px; margin-top: 48px; }
+  .gallery { padding: 0 12px 12px; }
   .about-photo-row { gap: 4px; }
   .about-photo:first-child { flex-basis: 100%; }
+}
+
+/* ---------- Project cards (Fun page) ----------
+   A card sits in a dashed slot; on hover it lifts out of the slot and its
+   stack of screenshots spreads. The title link stretches over the whole
+   card, while the github/live links sit above it and stay clickable. */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+.proj-card {
+  border: 1px dashed rgba(26,25,25,0.22);
+  border-radius: 14px;
+}
+.proj-card-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.5);
+}
+.proj-fan {
+  display: flex;
+  align-items: flex-end;
+  height: 104px;
+  margin: 4px 0 10px;
+  padding-left: 4px;
+}
+.proj-fan img {
+  height: 84px;
+  width: 38%;
+  max-width: 140px;
+  object-fit: cover;
+  object-position: top left;
+  border: 1px solid rgba(26,25,25,0.15);
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(26,25,25,0.14);
+  transform-origin: 50% 100%;
+}
+.proj-fan img:nth-child(1) { z-index: 3; transform: rotate(-5deg); }
+.proj-fan img:nth-child(2) { z-index: 2; margin-left: -8%; transform: translateY(-6px) rotate(2deg); }
+.proj-fan img:nth-child(3) { z-index: 1; margin-left: -8%; transform: rotate(6deg); }
+.proj-year { font-size: 0.8rem; color: var(--ink-soft); }
+.proj-title { font-size: 1.15rem; line-height: 1.25; }
+.proj-title a { text-decoration: none; color: inherit; }
+.proj-title a::after { content: ""; position: absolute; inset: 0; border-radius: 14px; z-index: 1; }
+.proj-arrow {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--ink-soft);
+}
+.proj-desc { margin: 0; font-size: 0.85rem; line-height: 1.65; color: var(--ink-soft); }
+.proj-card .pill-row { margin-top: auto; padding-top: 6px; }
+.proj-links { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.proj-links a { position: relative; z-index: 2; }
+.proj-card-inner:focus-within { outline: 2px solid var(--ink); outline-offset: 2px; }
+.proj-title a:focus-visible { outline: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .proj-card-inner, .proj-fan img, .proj-arrow { transition: transform 220ms cubic-bezier(.3,.7,.3,1), box-shadow 220ms ease-out; }
+}
+@media (hover: hover) {
+  .proj-card:hover .proj-card-inner {
+    transform: translate(3px, -8px) rotate(-1.5deg);
+    background: rgba(255,255,255,0.75);
+    box-shadow: 0 16px 30px rgba(26,25,25,0.14);
+  }
+  .proj-card:hover .proj-title { text-decoration: underline; text-underline-offset: 4px; }
+  .proj-card:hover .proj-arrow { color: var(--ink); transform: translate(2px, -2px); }
+  .proj-card:hover .proj-fan img:nth-child(1) { transform: translateX(-6px) rotate(-10deg) scale(1.08); }
+  .proj-card:hover .proj-fan img:nth-child(2) { transform: translateY(-14px) rotate(0deg) scale(1.08); }
+  .proj-card:hover .proj-fan img:nth-child(3) { transform: translateX(6px) rotate(10deg) scale(1.08); }
 }
 
 /* ---------- Status pill (open to work) ---------- */
@@ -564,7 +770,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   50% { opacity: 0.25; }
 }
 
-/* ---------- Click affordances (Robin's "ink-row" pattern) ----------
+/* ---------- Click affordances ----------
    Anything that goes somewhere carries a quiet arrow at rest:
      →  opens a page on this site (case studies)
      ↗  leaves the site (GitHub, LinkedIn, email)
@@ -585,12 +791,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   color: var(--ink-soft);
   transition: transform 150ms ease-out, color 150ms ease-out;
 }
-.item-icon, .exp-icon, .c-icon { transition: color 150ms ease-out, opacity 150ms ease-out; }
+.c-icon { transition: color 150ms ease-out, opacity 150ms ease-out; }
 .item-year, .pill-link, .contact-row .c-value { transition: color 150ms ease-out; }
 
 /* Expand caret on experience rows */
 .exp-row-head { position: relative; }
-.exp-row-head[data-target] { grid-template-columns: 24px 150px 1fr 1fr 16px; }
+.exp-row-head[data-target] { grid-template-columns: 150px 1fr 1fr 16px; }
 .exp-caret {
   width: 16px;
   height: 16px;
@@ -608,13 +814,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
     text-decoration: underline;
     text-underline-offset: 4px;
   }
-  a.item:hover .item-icon,
-  .exp-row-head[data-target]:hover .exp-icon,
   .exp-row-head[data-target]:hover .exp-caret,
   a.item:hover .item-year,
   a.item:hover .pill-link,
   .contact-row:hover .c-value { color: var(--ink); }
   a.item:hover .item-arrow { color: var(--ink); transform: translateX(3px); }
+  a.item:hover .item-mark { color: var(--ink); transform: rotate(-8deg) scale(1.08); }
   .exp-row-head[data-target]:hover .exp-caret { transform: translateY(2px); }
   .exp-row.open .exp-row-head[data-target]:hover .exp-caret { transform: rotate(180deg) translateY(2px); }
 }
@@ -633,22 +838,23 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 
 
 /* ---------- Work / Fun rows (all screen sizes) ----------
-     [icon] [title .......................]
+     [mark] [title .......................]
             [year →]
             [org]
             [description]
             [pills]
-   The icon owns its own column, so icons line up down the page and all text
-   starts on one vertical line under the title. Same layout on phone and
-   desktop; phones only get slightly smaller type. */
+   The hand-drawn mark owns its own column, so all text starts on one line
+   under the title. Phones only get slightly smaller type. */
 .item {
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
-  column-gap: 14px;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 12px;
   align-items: start;
 }
 .item-top, .item-title-row { display: contents; }
-.item-icon  { grid-column: 1; grid-row: 1; width: 20px; height: 20px; margin-top: 3px; }
+/* -1px centers the mark on the title's capital letters, not its line box */
+.item-mark  { grid-column: 1; grid-row: 1; width: 24px; height: 24px; margin-top: -1px; color: var(--ink);
+              transition: transform 200ms ease-out, color 150ms ease-out; }
 .item-title { grid-column: 2; grid-row: 1; line-height: 1.3; }
 .item-year  { grid-column: 2; grid-row: 2; margin-top: 12px; }
 .item-org   { grid-column: 2; grid-row: 3; margin-top: 6px; }
@@ -661,9 +867,8 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 }
 
 /* ---------- Home: experience & education rows on phones ----------
-   Desktop keeps its table layout (icon | dates | company | role | caret).
    Phones use the same pattern as the Work page:
-     [icon] [Company ..................] [caret]
+     [logo] [Company ..................] [caret]
             [dates]
             [role]
             (expanded details also start under the company name) */
@@ -671,19 +876,19 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .exp-row-head,
   .exp-row-head[data-target] {
     display: grid;
-    grid-template-columns: 20px minmax(0, 1fr);
-    column-gap: 12px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 14px;
     row-gap: 0;
     align-items: start;
     padding: 20px 4px;
   }
   .exp-row-head[data-target] { padding-right: 36px; }
-  .exp-icon    { grid-column: 1; grid-row: 1; margin-top: 1px; }
+  .exp-logo    { grid-column: 1; grid-row: 1 / span 3; width: 36px; height: 36px; }
   .exp-company { grid-column: 2; grid-row: 1; line-height: 1.35; }
   .exp-year    { grid-column: 2; grid-row: 2; margin-top: 12px; font-size: 0.8rem; }
   .exp-role    { grid-column: 2; grid-row: 3; margin-top: 6px; }
   .exp-caret   { position: absolute; top: 21px; right: 4px; }
-  .exp-detail-inner { padding-left: 36px; }
+  .exp-detail-inner { padding-left: 54px; }
 }
 
 /* ======================================================================
@@ -693,13 +898,13 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 @media (min-width: 641px) {
 
   /* Work / Fun rows:
-       [icon] [Title ..........................] [2024 →]
+       [mark] [Title ..........................] [2024 →]
               [Organization]
               [Description]
               [pills]
      Year goes back to the top-right corner; org, description and pills
      keep the same indent as the title. */
-  .item { grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 16px; }
+  .item { grid-template-columns: 24px minmax(0, 1fr) auto; column-gap: 12px; }
   .item-year  { grid-column: 3; grid-row: 1; justify-self: end; margin-top: 4px;
                 white-space: nowrap; }
   .item-org   { grid-row: 2; margin-top: 6px; }
@@ -707,24 +912,39 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .item-pills { grid-row: 4; }
 
   /* Home: experience & education rows, same idea:
-       [icon] [Company ..........................] [Oct 2025 – Present] [⌄]
+       [logo] [Company ..........................] [Oct 2025 – Present] [⌄]
               [Role]
      Dates never wrap, the chevron gets its own slim column, and the opened
      description starts under the company name. */
   .exp-list .exp-row-head,
   .exp-list .exp-row-head[data-target] {
-    grid-template-columns: 20px minmax(0, 1fr) auto 16px;
+    grid-template-columns: 40px minmax(0, 1fr) auto 16px;
     column-gap: 16px;
     line-height: normal; /* education rows are <div>s, work rows are <button>s: match them */
     row-gap: 0;
     align-items: start;
     padding: 18px 4px;
   }
-  .exp-list .exp-icon    { grid-column: 1; grid-row: 1; margin-top: 1px; }
+  .exp-list .exp-logo    { grid-column: 1; grid-row: 1 / span 2; }
   .exp-list .exp-company { grid-column: 2; grid-row: 1; line-height: 1.4; }
   .exp-list .exp-year    { grid-column: 3; grid-row: 1; justify-self: end;
                            white-space: nowrap; font-size: 0.85rem; margin-top: 2px; }
   .exp-list .exp-caret   { grid-column: 4; grid-row: 1; margin-top: 3px; }
   .exp-list .exp-role    { grid-column: 2; grid-row: 2; margin-top: 4px; font-size: 0.9rem; }
-  .exp-detail-inner      { padding-left: 40px; }
+  .exp-detail-inner      { padding-left: 60px; }
 }
+
+/* ---------- Organization logos (home experience rows) ---------- */
+.exp-logo {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: cover;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+/* ---------- Hand-drawn marks ---------- */
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.cs-mark { display: block; width: 34px; height: 34px; color: var(--ink); margin-bottom: 14px; }
