@@ -300,9 +300,13 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
   box-shadow: 0 12px 30px rgba(26,25,25,0.14);
   background: rgba(26,25,25,0.06);
 }
+/* Phones: one column, with the photo between the intro and the buttons */
 @media (max-width: 760px) {
-  .home-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .home-photo { width: min(60%, 230px); margin: 8px 0 0; }
+  .home-hero { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+  .home-hero-text { display: contents; }
+  .home-hero-text > * { margin-bottom: 0; }   /* flex items don't collapse margins */
+  .home-photo { order: 1; width: min(60%, 230px); margin: 28px 0 0; }
+  .home-buttons { order: 2; }
 }
 .home-headline {
   font-size: clamp(1.9rem, 1.6vw + 1.1rem, 2.8rem);
