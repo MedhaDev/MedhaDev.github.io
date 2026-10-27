@@ -7,7 +7,7 @@
   --pill-text: #1a1919;
   --line: rgba(26,25,25,0.14);
   --btn-dark: #1a1919;
-  --btn-dark-text: #f2ecd6;
+  --btn-dark-text: #f8f3e1;
   --font-mono: 'Fira Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --gutter: 1.5rem; /* page gutter: 24px at every width */
@@ -15,7 +15,7 @@
 }
 
 /* Page paper: one muted pastel per page */
-body.page-home   { background: #f2ecd6; } /* butter yellow */
+body.page-home   { background: #f8f3e1; } /* light butter yellow */
 body.page-work   { background: #dfe6ee; } /* dusty blue */
 body.page-fun    { background: #f2e1e4; } /* blush pink */
 body.page-about  { background: #e7e1ef; } /* soft lavender */
@@ -283,7 +283,33 @@ main .wrap { padding-top: 32px; padding-bottom: 60px; }
    dependency at all — it just flows, the same way on every device. */
 .home-hero {
   padding: 64px 0 24px;
-  max-width: 760px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 48px;
+  align-items: start;
+}
+/* The photo sits like a print on the desk: slightly tilted, straightening on hover */
+.home-photo { margin: 6px 0 0; }
+.home-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(26,25,25,0.14);
+  transform: rotate(1.5deg);
+  background: rgba(26,25,25,0.06);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .home-photo img { transition: transform 300ms cubic-bezier(.3,.7,.3,1); }
+}
+@media (hover: hover) {
+  .home-photo img:hover { transform: rotate(0deg) scale(1.02); }
+}
+@media (max-width: 760px) {
+  .home-hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .home-photo { order: -1; width: min(60%, 230px); margin: 0; }
 }
 .home-headline {
   font-size: clamp(1.9rem, 1.6vw + 1.1rem, 2.8rem);
@@ -476,7 +502,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 .cursor-tooltip-label {
   margin-top: 8px;
   background: var(--ink);
-  color: #f2ecd6;
+  color: #f8f3e1;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   padding: 5px 12px;
