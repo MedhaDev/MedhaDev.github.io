@@ -638,15 +638,18 @@ body:has(.gallery[open]) { overflow: hidden; }
 @keyframes gallery-fade { from { opacity: 0; } }
 
 /* Photos inside a gallery. Every photo carries its own aspect ratio (--ar,
-   set in about.html); using that ratio as the flex-grow value makes all
-   photos in a row the same height while filling the width, uncropped. */
+   set in about.html). Sizing each photo's width from that ratio and a target
+   row height wraps any number of photos into rows of equal height that fill
+   the width, uncropped. The spacer stops a short last row from stretching. */
 .about-photo-row {
+  --row-h: 230px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
+.about-photo-row::after { content: ""; flex: 999 1 0; }
 .about-photo {
-  flex: var(--ar, 1) 1 0;
+  flex: var(--ar, 1) 1 calc(var(--ar, 1) * var(--row-h));
   min-width: 0;
   width: 100%;
   height: auto;
@@ -659,8 +662,7 @@ body:has(.gallery[open]) { overflow: hidden; }
 /* Phones: first photo spans the full width, the other two share a row */
 @media (max-width: 560px) {
   .gallery { padding: 0 12px 12px; }
-  .about-photo-row { gap: 4px; }
-  .about-photo:first-child { flex-basis: 100%; }
+  .about-photo-row { gap: 4px; --row-h: 130px; }
 }
 
 /* ---------- Project cards (Fun page) ----------
